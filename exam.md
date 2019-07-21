@@ -1,6 +1,6 @@
-============================
-차세대OSS사업Unit 김중호 09261
-============================
+
+# 차세대OSS사업Unit 김중호 09261
+
 
 ---------------
 PART1
@@ -302,6 +302,7 @@ PART2
 
 ### PROBLEM1
 
+```
 set hive.cli.print.header=true;
 use problem1;
 
@@ -315,12 +316,14 @@ from account a
 ) b
 where a.type = b.type
 and a.status = 'Active'
+```
+![part2 p1](https://user-images.githubusercontent.com/6895482/61593120-97599800-ac16-11e9-90f7-3395c549053a.PNG)
 
 
-limit 2
-;
 
 ### PROBLEM2 
+```
+USE PROBLEM2;
 
 CREATE TABLE employee
  (id INT
@@ -336,12 +339,13 @@ CREATE TABLE employee
   STORED AS PARQUET
 location '/user/training/problem2/data/employee/'
 ;
-
-
+```
+![part2 p2](https://user-images.githubusercontent.com/6895482/61593121-97599800-ac16-11e9-99a6-a25abe27374e.PNG)
+![part2 p2_2](https://user-images.githubusercontent.com/6895482/61593122-97f22e80-ac16-11e9-82ea-11fdd25262ab.PNG)
 
 
 ### PROBLEM3
-
+```
 use problem3;
 
 create table solution
@@ -351,17 +355,17 @@ from customer a
 , account b
 where a.id = b.custid
 and b.amount > 0
+```
+![part2 p3](https://user-images.githubusercontent.com/6895482/61593123-97f22e80-ac16-11e9-9c53-043952d81946.PNG)
+![part2 p3_2](https://user-images.githubusercontent.com/6895482/61593124-97f22e80-ac16-11e9-87c0-2c553701d362.PNG)
 
 
 ### PROBLEM4
-
+PASS
 
 ### PROBLEM5
-
-select fname || ',' || lname || ',' || zip
-from customer
-limit 2;
-
+```
+USE PROBLEM5; 
 
 select concat(concat(concat(fname ,',') , concat(lname,',') ), zip) output
 from customer
@@ -374,22 +378,26 @@ select concat(concat(concat(fname ,',') , concat(lname,',') ), zip) output
 from employee
 where city = 'Palo Alto'
 and state = 'CA'
-
+```
+![part2 p5](https://user-images.githubusercontent.com/6895482/61593125-97f22e80-ac16-11e9-9af5-e6c913a09045.PNG)
+![part2 p5_2](https://user-images.githubusercontent.com/6895482/61593126-988ac500-ac16-11e9-9e27-a2e8975531e5.PNG)
 
 
 ### PROBLEM6
-
+```
 create table solution 
 as
 select id, fname, lname, address, city, state, zip
 ,substr(birthday,7) birthyear
 from employee
 ;
-
+```
+![part2 p6](https://user-images.githubusercontent.com/6895482/61593127-988ac500-ac16-11e9-8c76-74c59e5f5351.PNG)
+![part2 p6_2](https://user-images.githubusercontent.com/6895482/61593128-988ac500-ac16-11e9-8f7a-2bfdec946199.PNG)
 
 
 ### PROBLEM7
-
+```
 select concat(concat(lname,','),fname) from 
 (
 select fname, lname
@@ -397,34 +405,38 @@ select fname, lname
 where city = 'Seattle'
 order by lname, fname
 ) a
-
-limit 10;
-
+```
+![part2 p7](https://user-images.githubusercontent.com/6895482/61593129-99235b80-ac16-11e9-8165-b11726eb5c17.PNG)
+![part2 p7_2](https://user-images.githubusercontent.com/6895482/61593130-99235b80-ac16-11e9-8db7-f86aca605454.PNG)
 
 
 
 ### PROBLEM8
+```
 sqoop export \
   --connect jdbc:mysql://localhost/problem8 \
   --username cloudera \
   --password cloudera \
   --table solution \
+  --fields-terminated-by '\t' \
   --export-dir /user/training/problem8/data/customer/
-
-
+```
 
 ### PROBLEM9
-
+```
 create table solution
 as
 select concat('A',id) id
 ,fname ,lname ,address, city, state, zip, birthday
 from customer
 ;
+```
+![part2 p9](https://user-images.githubusercontent.com/6895482/61593132-99235b80-ac16-11e9-9fd9-dc6a57292805.PNG)
+![part2 p9_2](https://user-images.githubusercontent.com/6895482/61593133-99bbf200-ac16-11e9-92b2-09856cdcd84a.PNG)
 
 
 ### PROBLEM10
-
+```
 create view solution
 as
 select 
@@ -439,5 +451,6 @@ from customer a, billing b
 where a.id = b.id
 and b.charge is not null
 ;
-
-limit 2;
+```
+![part2 p10](https://user-images.githubusercontent.com/6895482/61593134-99bbf200-ac16-11e9-8690-de5f56321b0f.PNG)
+![part2 p10_2](https://user-images.githubusercontent.com/6895482/61593135-99bbf200-ac16-11e9-838d-e89109675730.PNG)
