@@ -74,9 +74,9 @@ sudo yum repolist enabled
 
 
 ### List output of the flowing commands:
-1. getent group skcc
-2. getent passwd training
+#### getent group skcc
 ![10](https://user-images.githubusercontent.com/6895482/61592907-02ee3600-ac14-11e9-84f7-a05aa3e31a41.PNG)
+#### getent passwd training
 ![11](https://user-images.githubusercontent.com/6895482/61592910-08e41700-ac14-11e9-9805-8839da2e4791.PNG)
 
 
@@ -385,6 +385,7 @@ and state = 'CA'
 
 ### PROBLEM6
 ```
+USE PROBLEM6; 
 create table solution 
 as
 select id, fname, lname, address, city, state, zip
@@ -398,6 +399,7 @@ from employee
 
 ### PROBLEM7
 ```
+USE PROBLEM7; 
 select concat(concat(lname,','),fname) from 
 (
 select fname, lname
@@ -424,6 +426,7 @@ sqoop export \
 
 ### PROBLEM9
 ```
+USE PROBLEM9; 
 create table solution
 as
 select concat('A',id) id
@@ -437,6 +440,7 @@ from customer
 
 ### PROBLEM10
 ```
+USE PROBLEM10; 
 create view solution
 as
 select 
